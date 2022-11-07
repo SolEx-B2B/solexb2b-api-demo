@@ -44,16 +44,16 @@ namespace SolExB2BApiDemo
                     KeyType = ApiProductKeyType.Ean,
                     Lines = new List<PostOrderLineApi>
                     {
-                            new PostOrderLineApi
-                            {
-                                Key = "0123456789123",
-                                Quantity = 10
-                            },
-                            new PostOrderLineApi
-                            {
-                                Key = "0987654321123",
-                                Quantity = 5
-                            }
+                        new PostOrderLineApi
+                        {
+                            Key = "0123456789123",
+                            Quantity = 10
+                        },
+                        new PostOrderLineApi
+                        {
+                            Key = "0987654321123",
+                            Quantity = 5
+                        }
                     }
                 },
                 Comment = "ZAMÓWIENIE TESTOWE, PROSZĘ NIE REALIZOWAĆ",
