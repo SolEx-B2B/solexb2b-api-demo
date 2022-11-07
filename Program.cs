@@ -8,7 +8,7 @@ namespace SolExB2BApiDemo
     internal class Program
     {
         private static readonly string apiKey = "09ac8610-c60d-46a3-8f34-ae936bc3d9e2";
-        private static readonly string apiUrl = "http://localhost/api2/";
+        private static readonly string apiUrl = "http://demo.solexb2b.com";
         private static readonly long clientId = 1;
 
         public static async Task Main(string[] args)
