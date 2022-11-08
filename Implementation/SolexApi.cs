@@ -1,13 +1,10 @@
 ﻿using Newtonsoft.Json;
 using RestSharp;
 using SolExB2BApiDemo.Model;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SolExB2BApiDemo.Implementation;
+
 public class SolexApi
 {
     private readonly SolexRestExecutor solexRestExecutor;
@@ -38,7 +35,7 @@ public class SolexApi
         RestResponse response = solexRestExecutor.Execute(request);
 
         CollectionApi<CountryApi> countries = JsonConvert
-            .DeserializeObject<CollectionApi<CountryApi>> (response.Content);
+            .DeserializeObject<CollectionApi<CountryApi>>(response.Content);
 
         return countries;
     }

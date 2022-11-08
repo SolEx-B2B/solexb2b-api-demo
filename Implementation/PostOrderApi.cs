@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 namespace SolExB2BApiDemo.Implementation;
+
 public class PostOrderApi
 {
     public List<OrderAdditionalPropertyApi> AdditionalProperties { get; set; }
