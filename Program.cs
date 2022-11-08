@@ -21,10 +21,7 @@ namespace SolExB2BApiDemo
 
             CollectionApi<CountryApi> countriesFromApi = solexApi.GetAvailableCountries();
 
-            List<DocumentApi> orderDocumentsFromApi = solexApi.GetOrdersDocuments(new List<long>
-            {
-                111, 222, 333
-            });
+            DocumentApi documentFromApi = solexApi.GetDocument("5868");
 
             PostOrderResponseApi createOrderResponseFromApi = solexApi.CreateOrder(new PostOrderApi
             {
@@ -34,38 +31,37 @@ namespace SolExB2BApiDemo
                     CountryId = 1,
                     Name = "Jan Kowalski",
                     Email = "jan@solex.net.pl",
-                    Phone = "123123123",
+                    Phone = "+48123123123",
                     Street = "Zwykła 3/4",
                     PostalCode = "42-200"
                 },
-                DeliveryName = "Paczkomat InPost",
+                DeliveryName = "Odbiór osobisty",
                 OrderLines = new PostOrderLinesApi
                 {
-                    KeyType = ApiProductKeyType.Ean,
+                    KeyType = ApiProductKeyType.Id,
                     Lines = new List<PostOrderLineApi>
                     {
                         new PostOrderLineApi
                         {
-                            Key = "0123456789123",
+                            Key = "871",
                             Quantity = 10
                         },
                         new PostOrderLineApi
                         {
-                            Key = "0987654321123",
+                            Key = "84534",
                             Quantity = 5
                         }
                     }
                 },
                 Comment = "ZAMÓWIENIE TESTOWE, PROSZĘ NIE REALIZOWAĆ",
-                InpostPaczkomatCode = "CZE001",
                 AdditionalProperties = new List<OrderAdditionalPropertyApi>
                 {
                     new OrderAdditionalPropertyApi
                     {
-                        Key = "AllegroOrderId",
+                        Key = "Uwagi ZK",
                         Values = new List<string>
                         {
-                            "d910d1a2-f39c-4b22-bace-17a0a3e92321"
+                            "ZAMÓWIENIE TESTOWE, PROSZĘ NIE REALIZOWAĆ"
                         }
                     }
                 }

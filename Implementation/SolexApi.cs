@@ -40,21 +40,17 @@ public class SolexApi
         return countriesApi;
     }
 
-    public List<DocumentApi> GetOrdersDocuments(List<long> solexOrdersIds)
+    public DocumentApi GetDocument(string documentKey)
     {
-        RestRequest request = solexRestExecutor.GetRequest("api3/document/filter", Method.Post);
+        RestRequest request = solexRestExecutor.GetRequest("api3/document", Method.Get);
 
-        request.AddJsonBody(new GetFilteredDocumentsApi
-        {
-            B2BIds = solexOrdersIds
-        });
+        request.AddQueryParameter("key", documentKey);
 
         RestResponse response = solexRestExecutor.Execute(request);
 
-        CollectionApi<DocumentApi> ordersDocumentsApi = JsonConvert
-            .DeserializeObject<CollectionApi<DocumentApi>>(response.Content);
+        DocumentApi orderDocumentApi = JsonConvert.DeserializeObject<DocumentApi>(response.Content);
 
-        return ordersDocumentsApi.Items;
+        return orderDocumentApi;
     }
 
     public CollectionPagedApi<StockInfoApi> GetStocks()
@@ -62,6 +58,8 @@ public class SolexApi
         RestRequest request = solexRestExecutor.GetRequest("api3/product/findProduct", Method.Get);
 
         request.AddQueryParameter("field", "Ean,Qty,Sku,Units");
+        request.AddQueryParameter("pageNumber", "1");
+        request.AddQueryParameter("pageSize", "100");
 
         RestResponse response = solexRestExecutor.Execute(request);
 
