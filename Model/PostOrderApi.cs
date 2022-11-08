@@ -1,7 +1,6 @@
-﻿using SolExB2BApiDemo.Model;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace SolExB2BApiDemo.Implementation;
+namespace SolExB2BApiDemo.Model;
 
 public class PostOrderApi
 {

@@ -1,4 +1,4 @@
-﻿namespace SolExB2BApiDemo.Implementation;
+﻿namespace SolExB2BApiDemo.Model;
 
 public class AddressApi
 {
