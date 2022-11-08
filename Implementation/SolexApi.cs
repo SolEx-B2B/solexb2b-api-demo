@@ -34,10 +34,10 @@ public class SolexApi
 
         RestResponse response = solexRestExecutor.Execute(request);
 
-        CollectionApi<CountryApi> countries = JsonConvert
+        CollectionApi<CountryApi> countriesApi = JsonConvert
             .DeserializeObject<CollectionApi<CountryApi>>(response.Content);
 
-        return countries;
+        return countriesApi;
     }
 
     public List<DocumentApi> GetOrdersDocuments(List<long> solexOrdersIds)
