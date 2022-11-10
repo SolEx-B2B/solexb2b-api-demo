@@ -1,9 +1,9 @@
-﻿using Newtonsoft.Json;
-using RestSharp;
+﻿using RestSharp;
 using SolExB2BApiDemo.Model;
 using System;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.Json;
 
 namespace SolExB2BApiDemo.Implementation;
 
@@ -104,7 +104,7 @@ public class SolexRestExecutor
 
         RestResponse response = Execute(request);
 
-        TokenApi apiToken = JsonConvert.DeserializeObject<TokenApi>(response.Content);
+        TokenApi apiToken = JsonSerializer.Deserialize<TokenApi>(response.Content);
 
         tokenExpiresAt = DateTime.UtcNow.AddSeconds(apiToken.ExpiresIn);
         token = apiToken.AccessToken;

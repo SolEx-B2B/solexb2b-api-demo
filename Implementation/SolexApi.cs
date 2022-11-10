@@ -1,7 +1,6 @@
-﻿using Newtonsoft.Json;
-using RestSharp;
+﻿using RestSharp;
 using SolExB2BApiDemo.Model;
-using System.Collections.Generic;
+using System.Text.Json;
 
 namespace SolExB2BApiDemo.Implementation;
 
@@ -22,8 +21,8 @@ public class SolexApi
 
         RestResponse response = solexRestExecutor.Execute(request);
 
-        PostOrderResponseApi postOrderResponseApi = JsonConvert
-            .DeserializeObject<PostOrderResponseApi>(response.Content);
+        PostOrderResponseApi postOrderResponseApi = JsonSerializer
+            .Deserialize<PostOrderResponseApi>(response.Content);
 
         return postOrderResponseApi;
     }
@@ -34,8 +33,8 @@ public class SolexApi
 
         RestResponse response = solexRestExecutor.Execute(request);
 
-        CollectionApi<CountryApi> countriesApi = JsonConvert
-            .DeserializeObject<CollectionApi<CountryApi>>(response.Content);
+        CollectionApi<CountryApi> countriesApi = JsonSerializer
+            .Deserialize<CollectionApi<CountryApi>>(response.Content);
 
         return countriesApi;
     }
@@ -48,7 +47,7 @@ public class SolexApi
 
         RestResponse response = solexRestExecutor.Execute(request);
 
-        DocumentApi orderDocumentApi = JsonConvert.DeserializeObject<DocumentApi>(response.Content);
+        DocumentApi orderDocumentApi = JsonSerializer.Deserialize<DocumentApi>(response.Content);
 
         return orderDocumentApi;
     }
@@ -63,8 +62,8 @@ public class SolexApi
 
         RestResponse response = solexRestExecutor.Execute(request);
 
-        CollectionPagedApi<StockInfoApi> stocksApi = JsonConvert
-            .DeserializeObject<CollectionPagedApi<StockInfoApi>>(response.Content);
+        CollectionPagedApi<StockInfoApi> stocksApi = JsonSerializer
+            .Deserialize<CollectionPagedApi<StockInfoApi>>(response.Content);
 
         return stocksApi;
     }
